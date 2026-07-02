@@ -859,8 +859,8 @@
       overflow-y:auto;
     }
     .nav-links.open{transform:translateY(0);}
-    .nav-links li{width:100%; border-bottom:1px solid var(--line);}
-    .nav-links a{padding:18px 0; justify-content:space-between; width:100%;}
+    .nav-links > li{width:100%; border-bottom:1px solid var(--line);}
+    .nav-links > li > a{padding:18px 0; justify-content:space-between; width:100%;}
     .nav-toggle{display:block;}
     .nav-right .btn-primary{display:none;}
 
@@ -1714,7 +1714,7 @@
 .values-head h2{font-size:clamp(32px,5vw,50px);}
 .values-head h2 em{color:var(--teal); font-style:normal;}
 
-.values-track-wrap{position:relative; overflow:hidden;}
+.values-track-wrap{position:relative; overflow:hidden; max-width:948px; margin:0 auto;}
 .values-track{display:flex; gap:24px; transition:transform .4s ease;}
 .value-card{
   background:#fff; border:1px solid var(--line); border-radius:22px; padding:36px;
@@ -1733,6 +1733,13 @@
   background:var(--line); cursor:pointer; transition:.2s; padding:0;
 }
 .values-nav button.active{background:var(--blue); width:26px; border-radius:6px;}
+
+@media (max-width:1024px){
+  .values-track-wrap{max-width:624px;}
+}
+@media (max-width:640px){
+  .values-track-wrap{max-width:300px;}
+}
 
 /* journey */
 .journey{
