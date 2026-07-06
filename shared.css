@@ -79,13 +79,17 @@
 
   /* ---------- header ---------- */
   header.nav{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(245,247,251,.78);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid rgba(17,25,51,.06);
+    position:fixed; top:20px; left:20px; right:20px; z-index:100;
+    max-width:1400px; margin:0 auto;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(17,25,51,.07);
+    border-radius:40px;
+    box-shadow:0 16px 44px -14px rgba(11,24,48,.22);
+    transition:box-shadow .25s ease, background .25s ease;
   }
   .nav-inner{
-    max-width:var(--max); margin:0 auto; padding:18px 32px;
+    max-width:var(--max); margin:0 auto; padding:14px 32px;
     display:flex; align-items:center; justify-content:space-between;
   }
   .logo{
@@ -891,8 +895,9 @@
 
   /* ---------- responsive nav ---------- */
   @media (max-width:880px){
+    header.nav{ top:14px; left:14px; right:14px; border-radius:28px; }
     .nav-links{
-      position:fixed; top:72px; left:0; right:0; height:calc(100vh - 72px);
+      position:fixed; top:88px; left:0; right:0; height:calc(100vh - 88px);
       background:var(--bg);
       flex-direction:column; align-items:flex-start; gap:0;
       padding:10px 32px 30px;
@@ -944,8 +949,11 @@
 /* ---------- use-case sticky pill nav ---------- */
 .uc-pill{
   display:flex; align-items:center; gap:6px;
-  background:#fff; border:1px solid var(--line); border-radius:50px;
-  padding:8px; box-shadow:0 16px 36px -22px rgba(10,20,50,.25);
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(17,25,51,.07);
+  border-radius:50px;
+  padding:8px; box-shadow:0 16px 40px -14px rgba(11,24,48,.22);
   max-width:fit-content; margin:0 auto;
   overflow-x:auto;
 }
@@ -963,15 +971,17 @@
 
 /* ---------- use-case sticky pill bar (single instance) ---------- */
 .uc-pill-bar{
+  margin-top:112px;   /* clears the floating header at initial paint */
   position:sticky;
-  top:72px;          /* sits flush below the fixed header */
+  top:98px;           /* floats just below the header pill once scrolled */
   z-index:90;
   display:flex;
   justify-content:center;
-  padding:10px 16px;
-  background:var(--bg);
-  border-bottom:1px solid var(--line);
+  padding:0 16px 22px;
+  background:transparent;
+  pointer-events:none;   /* only the pill itself should catch clicks */
 }
+.uc-pill-bar .uc-pill{ pointer-events:auto; }
 
 /* hide the old multi-slot divs just in case any remain */
 .uc-pill-slot{ display:none !important; }
@@ -979,6 +989,7 @@
 @media (max-width:640px){
   .uc-pill{padding:6px;}
   .uc-link{padding:7px 13px; font-size:12.5px;}
+  .uc-pill-bar{ margin-top:88px; top:74px; }
 }
 
 /* ---------- use case hero ---------- */
