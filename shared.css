@@ -2382,7 +2382,6 @@
   .gsr-grid{ grid-template-columns:1fr; }
   .gsr-note{ max-width:100%; }
 }
-
 /* ================= REQUEST A DEMO — OFF-CANVAS DRAWER ================= */
 .rdm-overlay{
   position:fixed; inset:0; z-index:300;
