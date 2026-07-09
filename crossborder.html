@@ -104,9 +104,8 @@
     </ul>
 
     <div class="nav-right">
-      <a href="#" class="nav-login">Login</a>
-      <a href="#" class="btn btn-primary">Sign up</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <a href="get-started.html" class="btn btn-primary">Get Started</a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -130,7 +129,7 @@
     <span class="eyebrow reveal">Solutions</span>
     <h1 class="reveal">Cross-border Financial<br>Infrastructure</h1>
     <p class="reveal">Powering Seamless Global Transactions with Real-Time FX &amp; Multi-Currency Capabilities</p>
-    <a href="#" class="btn btn-primary reveal">Book a Demo
+    <a href="#" class="btn btn-primary reveal js-open-demo">Book a Demo
       <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
@@ -300,6 +299,75 @@
     <span class="footer-legal"><a href="#">Terms of Service</a><a href="#">Cookies Policy</a></span>
   </div>
 </footer>
+
+<!-- ================= REQUEST A DEMO DRAWER ================= -->
+<div class="rdm-overlay" id="rdmOverlay">
+  <aside class="rdm-drawer" id="rdmDrawer" role="dialog" aria-modal="true" aria-labelledby="rdmTitle">
+    <div class="rdm-head">
+      <h2 class="rdm-title" id="rdmTitle">See how it works for your business</h2>
+      <button class="rdm-close" id="rdmClose" aria-label="Close">
+        <svg viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <p class="rdm-sub">Fill out the form and our team will be in touch to schedule a demo that fits your use case.</p>
+
+    <form class="rdm-form" id="rdmForm">
+      <div class="rdm-field">
+        <label class="rdm-label" for="rdmEmail">Email Address <span class="rdm-req">*</span></label>
+        <input class="rdm-input" type="email" id="rdmEmail" placeholder="Work email address" required>
+      </div>
+
+      <div class="rdm-field">
+        <label class="rdm-label" for="rdmFirst">First Name <span class="rdm-req">*</span></label>
+        <input class="rdm-input" type="text" id="rdmFirst" placeholder="Enter your first name" required>
+      </div>
+
+      <div class="rdm-field">
+        <label class="rdm-label" for="rdmLast">Last Name <span class="rdm-req">*</span></label>
+        <input class="rdm-input" type="text" id="rdmLast" placeholder="Enter your last name" required>
+      </div>
+
+      <div class="rdm-field">
+        <label class="rdm-label" for="rdmPhone">Phone Number</label>
+        <div class="rdm-phone">
+          <div class="rdm-phone-code-wrap">
+            <select class="rdm-phone-code" id="rdmPhoneCode">
+              <option value="234">(+234)</option>
+              <option value="233">(+233)</option>
+              <option value="254">(+254)</option>
+              <option value="27">(+27)</option>
+              <option value="20">(+20)</option>
+              <option value="44">(+44)</option>
+              <option value="1">(+1)</option>
+            </select>
+            <svg class="rdm-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4"/></svg>
+          </div>
+          <input class="rdm-input rdm-phone-input" type="tel" id="rdmPhone" placeholder="Enter mobile number">
+        </div>
+      </div>
+
+      <div class="rdm-field">
+        <label class="rdm-label" for="rdmCountry">Country <span class="rdm-req">*</span></label>
+        <div class="rdm-select-wrap">
+          <select class="rdm-select" id="rdmCountry" required defaultValue="">
+            <option value="" disabled selected>Select your country</option>
+            <option>Ghana</option>
+            <option>Nigeria</option>
+            <option>Kenya</option>
+            <option>South Africa</option>
+            <option>Egypt</option>
+            <option>United Kingdom</option>
+            <option>United States</option>
+            <option>Other</option>
+          </select>
+          <svg class="rdm-chevron" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary rdm-cta">Submit Request <span class="gs-dot"></span></button>
+    </form>
+  </aside>
+</div>
 
 <script src="shared.js"></script>
 
