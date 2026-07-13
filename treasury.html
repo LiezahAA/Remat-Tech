@@ -131,45 +131,16 @@
   </div>
 
   <div class="vault-banner reveal">
-    <svg viewBox="0 0 1200 460" preserveAspectRatio="xMidYMid slice" fill="none">
-      <defs>
-        <linearGradient id="floorGrad" x1="0" y1="0" x2="1200" y2="460" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#1c4a4a"/><stop offset="1" stop-color="#0f2a33"/>
-        </linearGradient>
-        <linearGradient id="hexGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop stop-color="#7aa3ff"/><stop offset="1" stop-color="#28d6ad"/>
-        </linearGradient>
-      </defs>
-      <rect width="1200" height="460" fill="url(#floorGrad)"/>
-      <g stroke="rgba(255,255,255,.08)" stroke-width="1.5">
-        <line x1="0" y1="120" x2="1200" y2="60"/><line x1="0" y1="220" x2="1200" y2="170"/>
-        <line x1="0" y1="320" x2="1200" y2="280"/><line x1="200" y1="0" x2="40" y2="460"/>
-        <line x1="500" y1="0" x2="380" y2="460"/><line x1="800" y1="0" x2="720" y2="460"/>
-        <line x1="1100" y1="0" x2="1050" y2="460"/>
-      </g>
-      <g transform="translate(600,260)">
-        <ellipse cx="0" cy="90" rx="220" ry="46" fill="#0a1f26" opacity="0.5"/>
-        <polygon points="0,-50 95,-10 95,70 0,110 -95,70 -95,-10" fill="#10303a" stroke="url(#hexGrad)" stroke-width="2"/>
-        <polygon points="0,-30 75,2 75,55 0,87 -75,55 -75,2" fill="#163844" stroke="url(#hexGrad)" stroke-width="1.6" opacity="0.9"/>
-        <polygon points="0,-10 55,12 55,42 0,64 -55,42 -55,12" fill="#1d4654" stroke="#28d6ad" stroke-width="1.4"/>
-        <circle cx="0" cy="22" r="20" fill="#7aa3ff" opacity="0.85"/>
-        <path d="M-7 22L-2 28L9 13" stroke="#0b1830" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-      </g>
-      <g transform="translate(440,140)">
-        <circle r="34" fill="#1f8a5c"/><circle r="34" fill="none" stroke="#28d6ad" stroke-width="2"/>
-        <text x="0" y="10" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="28" fill="#d8fff0">$</text>
-      </g>
-      <g transform="translate(520,210)">
-        <circle r="26" fill="#1d5c8a"/><circle r="26" fill="none" stroke="#7aa3ff" stroke-width="2"/>
-        <text x="0" y="8" text-anchor="middle" font-family="Inter,sans-serif" font-weight="700" font-size="22" fill="#d8eaff">£</text>
-      </g>
-    </svg>
+    <video class="vault-video" autoplay loop muted playsinline>
+      <source src="assets/video/treasury-vault.mp4" type="video/mp4">
+    </video>
   </div>
 </section>
 
 <!-- ================= REAL-TIME CONTROL ================= -->
 <section class="realtime">
   <div class="rt-glow"></div>
+  <div class="rt-visual"><img src="images/treasury-tech.jpg" alt="" class="rt-visual-img"></div>
   <div class="rt-inner">
     <div class="rt-badge reveal">
       <svg viewBox="0 0 48 48" fill="none">
