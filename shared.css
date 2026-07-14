@@ -1120,7 +1120,7 @@
   display:flex; align-items:center; justify-content:center; margin-bottom:26px;
 }
 .vd-card .icon svg{width:20px; height:20px;}
-.vd-card h3{color:#fff; font-size:17.5px; font-weight:500; line-height:1.4;}
+.vd-card h3{color:#fff; font-size:25px; font-weight:500; line-height:1.4; margin:20px 0 16px;}
 
 .track-nav{display:flex; gap:8px; justify-content:center; margin-top:30px;}
 .track-nav button{
