@@ -1760,7 +1760,12 @@
     font-size:clamp(32px,4.5vw,46px);
     line-height:1.2;
     letter-spacing:-0.02em;
-    color: var(--blue);
+
+    background:linear-gradient(90deg,#2f6df6,#56d6ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+
     text-align:center;
     margin:36px auto 0;
     max-width:560px;
