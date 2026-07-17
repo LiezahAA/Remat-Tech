@@ -2665,3 +2665,36 @@
 @media (max-width:640px){
   .rdm-drawer{ width:100vw; padding:40px 24px 48px; }
 }
+
+/* ================= Social Media Emojis ================= */
+.ct-social-row{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    align-items:center;
+}
+
+.ct-social-row a{
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+    border:1px solid var(--line);
+
+    color:var(--ink);
+    font-size:20px;
+
+    transition:.3s;
+}
+
+.ct-social-row a:hover{
+    background:var(--blue);
+    color:#fff;
+    border-color:var(--blue);
+
+    transform:translateY(-3px);
+}
