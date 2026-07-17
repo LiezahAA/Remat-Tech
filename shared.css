@@ -1839,7 +1839,7 @@
   border-radius:48px 48px 0 0; overflow:hidden;
   box-shadow:0 -40px 60px -40px rgba(10,20,50,.25);
 }
-.office-banner svg{width:100%; height:auto; display:block;}
+.office-banner img{width:100%; aspect-ratio:2.5/1; object-fit:cover; object-position:50% 35%; display:block;}
 @media(max-width:760px){ .office-banner{border-radius:32px 32px 0 0;} }
 
 .openings{padding:110px 32px; max-width:var(--max); margin:0 auto;}

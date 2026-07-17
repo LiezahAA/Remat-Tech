@@ -306,13 +306,13 @@
 
     function openModal(){
       lastFocused = document.activeElement;
-      form.hidden = false;
-      panel.hidden = true;
-      modal.classList.remove('is-result');
+      buildRecommendation();
+      form.hidden = true;
+      panel.hidden = false;
+      modal.classList.add('is-result');
       overlay.classList.add('is-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
-      setTimeout(() => company.focus(), 300);
     }
     function closeModal(){
       overlay.classList.remove('is-open');
