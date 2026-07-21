@@ -269,15 +269,19 @@
 
     // maps each challenge checkbox (by order) to the solution it recommends
     const SOLUTIONS = [
-      { title:'Treasury', desc:'Unified visibility and control of cash positions across all your bank accounts, in real time.' },
-      { title:'Receivables', desc:'Automatically match payments to invoices across currencies, eliminating manual reconciliation.' },
-      { title:'Cross-Border Payments', desc:'Move money across borders at competitive FX rates with fast, predictable settlement.' },
-      { title:'Liquidity Forecasting', desc:'Forecast cash flow and manage liquidity with a structured, data-driven view.' },
-      { title:'Trade Finance', desc:'Access Letters of Credit, Bank Guarantees, and documentary instruments on demand.' },
-      { title:'Supply Chain Finance', desc:'Offer early payment to suppliers without straining your own working capital.' },
-      { title:'Banking Infrastructure', desc:'Get SWIFT connectivity and correspondent banking access without a full licence.' },
-      { title:'Integrations', desc:'Connect Multigate to your treasury and accounting systems via API.' }
-    ];
+    {
+        title: "Treasury", desc: "Unified visibility and control of cash positions across all your bank accounts."},
+    {
+        title: "Lending", desc: "Automate lending workflows and improve credit decision-making."},
+    {
+        title: "Compliance", desc: "Streamline compliance, audit, and regulatory reporting."}
+];
+
+const CHECKBOX_TO_SOLUTION = [
+    0, 0, 0,   // Checkboxes 1-3 → Treasury
+    1, 1, 1,   // Checkboxes 4-6 → Lending
+    2, 2, 2    // Checkboxes 7-9 → Compliance
+];
 
     function checkIconSvg(){
       return '<svg viewBox="0 0 12 12" fill="none"><path d="M2 6.2L4.6 8.8L10 3" stroke="#2f6df6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -285,10 +289,21 @@
 
     function buildRecommendation(){
       const checks = Array.from(document.querySelectorAll('.gs-check input[type="checkbox"]'));
-      let picks = checks
-        .map((c, i) => c.checked ? SOLUTIONS[i] : null)
-        .filter(Boolean);
-      if (picks.length === 0) picks = [SOLUTIONS[0], SOLUTIONS[1]];
+     
+ let picks = checks
+    .map((checkbox, index) => {
+        if (!checkbox.checked) return null;
+
+        return CHECKBOX_TO_SOLUTION[index];
+    })
+    .filter(id => id !== null);
+
+
+    // Remove duplicate solution IDs
+    picks = [...new Set(picks)];
+
+    // Convert IDs into solution objects
+    picks = picks.map(id => SOLUTIONS[id]);
 
       gsrGrid.innerHTML = picks.map(sol => `
         <div class="gsr-card">
