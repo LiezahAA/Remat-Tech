@@ -268,14 +268,26 @@
     let lastFocused = null;
 
     // maps each challenge checkbox (by order) to the solution it recommends
-    const SOLUTIONS = [
+   const SOLUTIONS = [
     {
-        title: "Secure", desc: "Secure communication, centralized records, and controlled stakeholder collaboration."},
+        title: "Secure",
+        link: "secure.html",
+        linkText: "Secure Enterprise Communication Platform",
+        desc: "Secure communication, centralized records, and controlled stakeholder collaboration."
+    },
     {
-        title: "Treasury", desc: "Real-time visibility, liquidity management, and better control over financial positions."},
+        title: "Treasury",
+        link: "treasury.html",
+        linkText: "Treasury and ALM Platform",
+        desc: "Real-time visibility, liquidity management, and better control over financial positions."
+    },
     {
-        title: "Loan", desc: "Improve loan origination, credit decisioning, and portfolio management."}
-      ];
+        title: "Loan",
+        link: "Loans.html",
+        linkText: "Loan Origination and Credit Risk Solutions",
+        desc: "Improve loan origination, credit decisioning, and portfolio management."
+    }
+];
 
 const CHECKBOX_TO_SOLUTION = [
     0, // Checkbox 1 → Secure
@@ -315,7 +327,10 @@ const CHECKBOX_TO_SOLUTION = [
         <div class="gsr-card">
           <div class="gsr-card-top">
             <span class="gsr-check">${checkIconSvg()}</span>
-            <h3>${sol.title}</h3>
+            <h3><a href="${sol.link}">
+                    ${sol.linkText}
+                </a>
+            </h3>
           </div>
           <p>${sol.desc}</p>
         </div>
