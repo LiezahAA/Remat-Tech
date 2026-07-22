@@ -206,6 +206,63 @@
 /* --- reveal (self-contained) --- */
 .ldr-reveal{ opacity:0; transform:translateY(24px); transition:opacity .65s ease, transform .65s ease; }
 .ldr-reveal.in{ opacity:1; transform:none; }
+
+/* ===== FOUNDER / TEAM PROFILE MODAL ===== */
+.fdr-modal-overlay{
+  position:fixed; inset:0; z-index:9999;
+  background:rgba(8,14,28,.55);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  opacity:0; visibility:hidden;
+  transition:opacity .3s ease, visibility 0s linear .3s;
+}
+.fdr-modal-overlay.is-open{
+  opacity:1; visibility:visible;
+  transition:opacity .3s ease, visibility 0s linear 0s;
+}
+.fdr-modal{
+  position:fixed; top:160px; right:0; bottom:0; left:23vw;
+  background:#fff; overflow-y:auto;
+  display:grid; grid-template-columns:470px 1fr;
+  opacity:0; transform:translateX(24px);
+  transition:transform .4s cubic-bezier(.2,.8,.2,1), opacity .35s ease;
+}
+.fdr-modal-overlay.is-open .fdr-modal{ opacity:1; transform:translateX(0); }
+.fdr-modal-close{
+  position:fixed; top:24px; left:24px; z-index:2;
+  width:36px; height:36px; border-radius:50%; border:none;
+  background:#fff; box-shadow:0 4px 14px rgba(0,0,0,.18);
+  display:flex; align-items:center; justify-content:center; cursor:pointer;
+  color:var(--ink); transition:.2s;
+}
+.fdr-modal-close:hover{ background:#f0f0f0; }
+.fdr-modal-close svg{ width:14px; height:14px; }
+.fdr-modal-photo-col{ background:#eef1f7; padding:48px; display:flex; flex-direction:column; }
+.fdr-modal-photo{
+  border-radius:14px; overflow:hidden; background:#e4e8f0; flex:none;
+  aspect-ratio:4/4.3; display:flex; align-items:flex-end; justify-content:center;
+}
+.fdr-modal-photo svg{ width:75%; }
+.fdr-modal-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+.fdr-modal-nav{ display:flex; gap:10px; margin-top:24px; flex:none; }
+.fdr-modal-nav button{
+  width:36px; height:36px; border-radius:50%; border:1px solid var(--line);
+  background:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:.2s;
+  color:var(--ink);
+}
+.fdr-modal-nav button:hover{ background:var(--bg); border-color:var(--blue); color:var(--blue); }
+.fdr-modal-nav button svg{ width:13px; height:13px; }
+.fdr-modal-info{ padding:80px 64px 64px 56px; max-width:900px; }
+.fdr-modal-info h3{ font-family:'Fraunces',serif; font-size:36px; font-weight:600; color:var(--ink); line-height:1.15; margin-bottom:8px; }
+.fdr-modal-info .fdr-role{ color:var(--blue); font-size:16px; font-weight:600; display:block; margin-bottom:26px; }
+.fdr-modal-bio p{ color:var(--gray); font-size:15px; line-height:1.75; margin-bottom:18px; }
+.fdr-modal-bio p:last-child{ margin-bottom:0; }
+
+@media(max-width:900px){
+  .fdr-modal{ left:0; top:0; grid-template-columns:1fr; }
+  .fdr-modal-photo-col{ padding:70px 28px 0; }
+  .fdr-modal-photo{ aspect-ratio:4/3; }
+  .fdr-modal-info{ padding:28px; max-width:none; }
+}
 </style>
 </head>
 <body>
@@ -325,8 +382,8 @@
   </div>
 
   <div class="ldr-founder-grid">
-    <!-- Eghosa -->
-    <div class="ldr-founder-card ldr-reveal">
+    <!-- Michael -->
+    <div class="ldr-founder-card ldr-reveal" data-profile-card>
       <div class="ldr-founder-photo">
         <svg viewBox="0 0 240 300" fill="none">
           <!-- dark suit figure with warm skin -->
@@ -347,9 +404,15 @@
       <div class="ldr-founder-info">
         <h3>Michael Tahiru</h3>
         <span class="role">CEO</span>
-        <a href="#" class="ldr-meet-btn">Meet Michael
+        <a href="#" class="ldr-meet-btn js-open-profile">Meet Michael
           <svg viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L8 3M12 7L8 11" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+      </div>
+      <!-- Bio content used by the profile modal — not visible on the page itself -->
+      <div class="profile-bio-source" hidden>
+        <p>PLACEHOLDER BIO — replace with Michael's real bio. Michael Tahiru is the CEO of Remat Technologies, leading the company's mission to bring proven, enterprise-grade financial technology to West Africa's most important institutions.</p>
+        <p>He brings together deep experience across financial services, technology implementation, regulatory compliance, and institutional strategy, working closely with banks, MFIs, and development finance institutions across the region.</p>
+        <p>Michael is focused on building a team and a company that West African institutions can trust with their most critical infrastructure.</p>
       </div>
     </div>
     <!-- Kunmi -->
@@ -576,6 +639,31 @@
   </aside>
 </div>
 
+<!-- ================= PROFILE MODAL ================= -->
+<div class="fdr-modal-overlay" id="profileModalOverlay">
+  <div class="fdr-modal" role="dialog" aria-modal="true" aria-labelledby="profileModalName">
+    <button class="fdr-modal-close" id="profileModalClose" aria-label="Close">
+      <svg viewBox="0 0 14 14" fill="none"><path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <div class="fdr-modal-photo-col">
+      <div class="fdr-modal-photo" id="profileModalPhoto"></div>
+      <div class="fdr-modal-nav">
+        <button id="profileModalPrev" aria-label="Previous profile">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button id="profileModalNext" aria-label="Next profile">
+          <svg viewBox="0 0 14 14" fill="none"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="fdr-modal-info">
+      <h3 id="profileModalName"></h3>
+      <span class="fdr-role" id="profileModalRole"></span>
+      <div class="fdr-modal-bio" id="profileModalBio"></div>
+    </div>
+  </div>
+</div>
+
 <script src="shared.js"></script>
 <script>
 // Self-contained reveal — no dependency on shared.js timing
@@ -587,6 +675,99 @@
   els.forEach(el => obs.observe(el));
   // Fallback: reveal everything after 1s if observer hasn't fired
   setTimeout(() => els.forEach(el => el.classList.add('in')), 1000);
+})();
+</script>
+
+<!-- ===== PROFILE MODAL LOGIC =====
+     Works for any card marked data-profile-card that contains:
+       .ldr-founder-photo (or any photo wrapper)  -> cloned into the modal
+       h3                                          -> name
+       .role                                       -> role/title
+       .profile-bio-source                         -> bio paragraphs (hidden on page)
+       .js-open-profile                            -> the "Meet ___" trigger
+     To add more people later, just copy this same set of pieces onto
+     a new card (e.g. the "Meet the team" member cards) and it will
+     plug into the same modal + prev/next automatically. -->
+<script>
+(function () {
+  const overlay   = document.getElementById('profileModalOverlay');
+  const closeBtn  = document.getElementById('profileModalClose');
+  const prevBtn   = document.getElementById('profileModalPrev');
+  const nextBtn   = document.getElementById('profileModalNext');
+  const photoEl   = document.getElementById('profileModalPhoto');
+  const nameEl    = document.getElementById('profileModalName');
+  const roleEl    = document.getElementById('profileModalRole');
+  const bioEl     = document.getElementById('profileModalBio');
+  if (!overlay) return;
+
+  const cards = Array.from(document.querySelectorAll('[data-profile-card]'));
+  let currentIndex = 0;
+  let lastFocused = null;
+
+  function renderCard(index) {
+    const card = cards[index];
+    if (!card) return;
+    const photoSource = card.querySelector('.ldr-founder-photo, .ldr-member-photo');
+    const name = card.querySelector('h3, .ldr-member-name');
+    const role = card.querySelector('.role, .ldr-member-role');
+    const bio  = card.querySelector('.profile-bio-source');
+
+    photoEl.innerHTML = photoSource ? photoSource.innerHTML : '';
+    nameEl.textContent = name ? name.textContent.trim() : '';
+    roleEl.textContent = role ? role.textContent.trim() : '';
+    bioEl.innerHTML = bio ? bio.innerHTML : '';
+
+    // hide prev/next entirely when there's only one profile to show
+    const navWrap = prevBtn ? prevBtn.parentElement : null;
+    if (navWrap) navWrap.style.display = cards.length > 1 ? 'flex' : 'none';
+  }
+
+  function openModal(index) {
+    currentIndex = index;
+    renderCard(currentIndex);
+    lastFocused = document.activeElement;
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => closeBtn.focus(), 250);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  cards.forEach((card, index) => {
+    const trigger = card.querySelector('.js-open-profile');
+    if (!trigger) return;
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      openModal(index);
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+
+  // click on the dimmed/blurred backdrop (outside the card) closes it
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!overlay.classList.contains('is-open')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowRight') nextBtn?.click();
+    if (e.key === 'ArrowLeft') prevBtn?.click();
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    renderCard(currentIndex);
+  });
+  prevBtn?.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    renderCard(currentIndex);
+  });
 })();
 </script>
 </body>
