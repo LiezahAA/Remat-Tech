@@ -411,7 +411,7 @@
   .borderless h2{
     color:#fff; font-size:clamp(38px,7vw,64px); line-height:1.08; font-weight:500;
   }
-  .borderless h2 .teal{color:var(--teal);}
+  .borderless h2 .teal{color:var(--blue-soft);}
   .borderless-copy p{color:#aab4d1; font-size:16px; max-width:380px; margin-bottom:28px;}
 
   .dot-field{
@@ -1969,7 +1969,7 @@
 }
 .values-head{text-align:center; margin-bottom:60px;}
 .values-head h2{font-size:clamp(32px,5vw,50px);}
-.values-head h2 em{color:var(--teal); font-style:normal;}
+.values-head h2 em{color:var(--blue); font-style:normal;}
 
 .values-track-wrap{position:relative; overflow:hidden; max-width:var(--max); margin:0 auto;}
 .values-track{display:flex; gap:32px; transition:transform .4s ease;}
