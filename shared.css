@@ -399,7 +399,7 @@
   .borderless{
     position:relative;
     padding:130px 32px;
-    background:var(--navy);
+    background:linear-gradient(135deg, #050e2e 0%, #041854 35%, #0c4baf 70%, #0494db 90%);
     color:#fff;
     overflow:hidden;
   }
@@ -444,7 +444,7 @@
   }
   .feature-card .icon svg{width:20px; height:20px; stroke:var(--teal);}
   .feature-card h3{color:#fff; font-size:18px; font-weight:600; font-family:'Inter',sans-serif; margin-bottom:10px;}
-  .feature-card p{color:#9fabc9; font-size:14px;}
+  .feature-card p{color:#f7f8fa; font-size:14px;}
 
   @media (max-width:880px){
     .borderless-grid{grid-template-columns:1fr; gap:30px;}
@@ -895,7 +895,7 @@
   .feature-card:nth-child(3) .icon { animation-delay: 2.6s; }
   @keyframes iconGlow {
     0%, 100% { box-shadow: none; }
-    50%       { box-shadow: 0 0 20px 4px rgba(40,214,173,.25); }
+    50%       { box-shadow: 0 0 20px 4px rgba(19, 199, 154, 0.25); }
   }
 
   /* -- News media gradient shimmer -- */
